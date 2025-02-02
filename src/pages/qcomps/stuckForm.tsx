@@ -1,18 +1,33 @@
+/**
+ * When the Form is rendered, it appears to be frozen. 
+ * When a user enters stuff into the <input> tags or 
+ * clicks on the reset button nothing happens. 
+ * Identify and fix the error. 
+ */
+import { useState } from 'react'
 export default function Form() {
-  let firstName = '';
-  let lastName = '';
+  //let firstName = '';
+  //let lastName = ''; 
+    const [firstName, setFirstName] = useState('')
+    const[lastName, setLastName] = useState('')
+    const[name, setName] = useState({firstName: '', lastName:''})
 
   function handleFirstNameChange(e: { target: { value: string; }; }) {
-    firstName = e.target.value;
+    //firstName = e.target.value;
+      setFirstName(e.target.value)
   }
 
   function handleLastNameChange(e: { target: { value: string; }; }) {
-    lastName = e.target.value;
+    //lastName = e.target.value;
+          setLastName(e.target.value)
   }
 
   function handleReset() {
-    firstName = '';
-    lastName = '';
+    //firstName = '';
+    //lastName = '';
+      //setName({firstName:"", lastName:""})
+     setFirstName('')
+     setLastName('')
   }
 
   return (

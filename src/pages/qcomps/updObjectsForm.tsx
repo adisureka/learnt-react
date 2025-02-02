@@ -1,5 +1,10 @@
 import { useState } from 'react';
 
+/**
+ * The component has a bug that 
+ * prevents the state from being updated correctly.
+ * Identify the bug and fix it.
+ */
 export default function Scoreboard() {
   const [player, setPlayer] = useState({
     firstName: 'John Woodrow',
@@ -8,7 +13,11 @@ export default function Scoreboard() {
   });
 
   function handlePlusClick() {
-    player.likescore++;
+    //player.likescore++;
+      setPlayer({
+          ...player,
+          likescore: player.likescore + 1
+      })
   }
 
   function handleFirstNameChange(e: { target: { value: string; }; }) {
@@ -19,7 +28,11 @@ export default function Scoreboard() {
   }
 
   function handleLastNameChange(e: { target: { value: string; }; }) {
-    player.lastName = e.target.value;
+    //player.lastName = e.target.value;
+      setPlayer({
+          ...player,
+          lastName:e.target.value
+      })
   }
 
   return (
@@ -30,21 +43,27 @@ export default function Scoreboard() {
         <button onClick={handlePlusClick}>
           +1
         </button>
+            <hr/>
       </label>
       <label>
-        First name:
+         First name:       
         <input
           value={player.firstName}
           onChange={handleFirstNameChange}
-        />
+        />         
       </label>
+               <b>{player.firstName}</b>
+              <hr/>
       <label>
-        Last name:
+        Last name:    
         <input
           value={player.lastName}
           onChange={handleLastNameChange}
         />
       </label>
+           
+           <b>{player.lastName}</b>
+                <hr/>
     </>
   );
 }
